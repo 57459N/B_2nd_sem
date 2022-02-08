@@ -5,13 +5,16 @@
 
 using namespace std;
 
+const int LEN = 1000;
+const char separators[] = " .,;:!?-()";
+
+
 char** get_words(char str[]){
-	const char separators[] = " .,;:!?-()";
 
 	char* new_str = _strdup(str);
 	char* word = strtok(new_str, separators);
 
-	char** words = new char* [100]{};
+	char** words = new char* [LEN/2]{};
 	int s = 0;
 	while (word != nullptr) {
 		words[s++] = word;
@@ -23,21 +26,31 @@ char** get_words(char str[]){
 
 int m12() {
 
-	const int LEN = 1000;
-	const char separators[] = " .,;:!?-()";
 
-	char str[LEN];
-	cout << "Enter some string: ";
-	cin.getline(str, LEN);
+	char str1[LEN];
+	cout << "Enter some string 1: ";
+	cin.getline(str1, LEN);
+	char str2[LEN];
+	cout << "Enter some string 2: ";
+	cin.getline(str2, LEN);
 
-	char** words1 = get_words(str);
-	char** words2 = get_words(str);
+	char** words1 = get_words(str1);
+	char** words2 = get_words(str2);
 	
-	for (int i = 0; words1[i]; i++) {
-		cout << words1[i] << '\n';
-	}
+	char** in_both = new char* [LEN / 2]{};
+	int s = 0;
 	for (int i = 0; words2[i]; i++) {
-		cout << words2[i] << '\n';
+		for (int j = 0; words1[j]; j++) {
+			if (!strcmp(words2[i], words1[j]))  {
+				in_both[s++] = words2[i];
+				break;
+			}
+		}
 	}
+
+	for (int i = 0; in_both[i]; i++) {
+		cout << in_both[i] << " ";
+	}
+
 	return 0;
 }
