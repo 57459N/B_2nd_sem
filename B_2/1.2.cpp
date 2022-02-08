@@ -26,7 +26,6 @@ char** get_words(char str[]){
 
 int m12() {
 
-
 	char str1[LEN];
 	cout << "Enter some string 1: ";
 	cin.getline(str1, LEN);
@@ -38,6 +37,7 @@ int m12() {
 	char** words2 = get_words(str2);
 	
 	char** in_both = new char* [LEN / 2]{};
+
 	int s = 0;
 	for (int i = 0; words2[i]; i++) {
 		for (int j = 0; words1[j]; j++) {
