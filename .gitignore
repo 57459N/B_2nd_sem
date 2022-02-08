@@ -30,3 +30,21 @@
 *.exe
 *.out
 *.app
+
+# Debug symbols
+*.pdb
+
+#MSVS
+Debug/
+x64/
+.vs/
+*.ilk 
+*.idb 
+*.tlog
+*.user
+
+
+#CLion
+.idea/
+cmake-build-*/
+B_1/str_to_arr.cpp
