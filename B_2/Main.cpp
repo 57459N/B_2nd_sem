@@ -16,6 +16,6 @@ using namespace std;
 
 int main()
 {
-	m16();
+	m21();
 	return 0;
 }
