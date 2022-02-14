@@ -8,6 +8,7 @@ int m14();
 int m15();
 int m16();
 int m21();
+int m22();
 
 
 void create_numbers();
