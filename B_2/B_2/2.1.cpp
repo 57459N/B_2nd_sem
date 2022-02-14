@@ -7,8 +7,13 @@
 using namespace std;
 
 void printArrr(int* arr, int size) {
-	for (int i = 0; i < size; i++)
-		cout << arr[i] << " ";
+	for (int i = size - 1; i >= 0; i--)
+	{
+		if (arr[i]) {
+			cout << i << " ";
+		}
+	}
+		
 }
 
 bool put(int num, int* arr, int& size, bool(*f)(int, int)) { //  1, 3 , 5, 9, 11 
@@ -39,19 +44,17 @@ bool put(int num, int* arr, int& size, bool(*f)(int, int)) { //  1, 3 , 5, 9, 11
 }
 
 int m21() {
-	int* arr = new int[1e4]{};
+	int* arr = new int[10001]{};
 	ifstream file("./numbers.txt");
-	char* line = new char[10]{};
-
+	
 	if (file.is_open()) {
-		int size = 0;
-		while (file.getline(line, 10)) {
-			put(atoi(line), arr, size, [](int a, int b) {return a > b;});
-			
+		int temp = 0;
+		while (file >> temp) {
+			arr[temp]++;
 		}
 	}
-	else cout << "Error while opening file!";
-	
-	printArrr(arr, 1e4+1 );
+	printArrr(arr, 10001);
+
+	delete[] arr;
 	return 0;
 }
