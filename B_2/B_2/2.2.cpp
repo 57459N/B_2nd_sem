@@ -1,109 +1,186 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
-#include <cstring>
-#include <string>
+#include <cmath>
 #include <ctime>
-#include "Functions.h"
+#include <iomanip>
+#include <iostream>
 
 using namespace std;
 
-struct Student {
-
-	union {
-		char* name = nullptr;
-		int value;
-	};
-	
-	char* surname = nullptr;
-	char* patronymic = nullptr;
-
-	time_t birthday;
-	short grade;
-	short score;
-};
-
-
-struct Node {
-	Student student;
-	Node* next = nullptr;
-};
-
-class List {
+class Complex {
 private:
-	Node* head = nullptr;
-
+    double re = 0;
+    double im = 0;
 public:
-	List() { head = nullptr; }
+    Complex() = default;
 
-	void update(Student student) {
-		Node* newNode = new Node;
+    Complex(double a, double b) {
+        re = a;
+        im = b;
+    }
+   
+   
+    Complex operator * (const Complex& num2) {
+        return Complex(this->re * num2.re - this->im*num2.im, this->re*num2.im + this->im*num2.re);
+    }
+    Complex operator + (const Complex& num2) {
+        return Complex(this->re+num2.re, this->im+num2.im);
+    }
 
-		newNode->student = student;
-		newNode->next = nullptr;
+    Complex& operator += (const Complex& num2) {
+        re += num2.re;
+        im += num2.im;
+        return *this;
+    }
 
-		if (head == nullptr) { head = newNode; }
-		else {
-			Node* current = head;
-			while (current->next != nullptr) {
-				current = current->next;
-			}
-			current->next = newNode;
-		}
-	}
-
-	void show() {
-		Node* current = head;
-
-		cout << "Surname Name Patronymic Birth Grade Score";
-		while (current != nullptr) {
-			cout << current->student.surname << " " << current->student.name << " " << current->student.patronymic << " " << current->student.birthday << " " << current->student.grade << " " << current->student.score << endl;
-			current = current->next;
-		}
-	}
+    friend std::ostream& operator<< (std::ostream& str, const Complex& o);
 };
 
+std::ostream& operator<< (std::ostream& str, const Complex& o) {
+    if (o.im >= 0) {
+        str << setw(25) << o.re << "+" << o.im << "i";
+    }
+    else {
+        str << setw(25) << o.re << o.im << "i";
+    }
 
+    return str;
+}
 
-int m22() {
+void print_matrix_2d(int** arr, int res) {
+    for (int i = 0; i < res; i++) {
+        for (int j = 0; j < res; j++) {
+            cout << setw(6) << arr[i][j] << "  ";
+        }
+        cout << endl;
+    }
+}
 
-	//List list;
-	
-	setlocale(LC_ALL, "Russian");
-	srand(time(nullptr));
+int m_2d_to_line(int i, int j, int res) {
+    return res * j + i;
+}
 
-	int len = 100;
+void m_multy( Complex* arrA, Complex* arrB, Complex* arrC, int res) {
+    for (int i = 0; i < res; i++)
+    {
+        for (int j = 0; j < res; j++)
+        {
+            Complex sum = Complex(0,0);
 
-	char** mNames = new char*[len];
-	char** mSurnames = new char*[len];
-	char** mPatronymics = new char*[len];
-		
-	char** fNames = new char*[len];
-	char** fSurnames = new char*[len];
-	char** fPatronymics = new char*[len];
+            for (int l = 0; l < res; l++)
+            {
+                int addA = m_2d_to_line(i, l, res);
+                int addB = m_2d_to_line(l, j, res);
+                sum += arrA[addA] * arrB[addB];
+            }
 
-	Student* students = new Student[len];
+            int addIJ = m_2d_to_line(i, j, res);
+            arrC[addIJ] = sum;
+        }
+    }
+}
 
-	load(mNames, mSurnames, mPatronymics, "male");
-	load(fNames, fSurnames, fPatronymics, "female");
+void m_multy(Complex** arrA, Complex** arrB, Complex** arrC, int res) {
+    for (int i = 0; i < res; i++)
+    {
+        for (int j = 0; j < res; j++)
+        {
+            Complex sum = Complex(0, 0);
+            for (int l = 0; l < res; l++)
+            {
+                sum += arrA[i][l] * arrB[l][j];
+            }
+            arrC[i][j] = sum;
+        }
+    }
+}
 
-	for (int i = 0; i < len; i++)
-	{
-		Student student = {};
+void printM(Complex* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << arr[m_2d_to_line(i, j, n)] << "   ";
+        }
+        cout << "\n\n\n";
+    }
+}
 
-		if (rand() % 2) {
-			strcpy( student.name, mNames[rand() % 100]);
-			strcpy(student.surname, mSurnames[rand() % 100]);
-			strcpy(student.patronymic, mPatronymics[rand() % 100]);
-		}
-		else {
-			strcpy(student.name, fNames[rand() % 100]);
-			strcpy(student.surname, fSurnames[rand() % 100]);
-			strcpy(student.patronymic, fPatronymics[rand() % 100]);
-		}
+void printM(Complex** arr, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << arr[i][j] << "   ";
+        }
+        cout << "\n\n\n";
+    }
+}
 
-		cout << time(0);
-		
-	}
+int m22()
+{
+    int res = 0;
+    cout << "Enter resolution of matrix NxN: ";
+    cin >> res;
 
-	return 0;
+    srand(time(nullptr));
+
+    int len = res*res;
+
+    Complex* arrA_line = new Complex[len];
+    Complex* arrB_line = new Complex[len] {};
+
+    Complex** arrA_2d = new Complex*[res];
+    Complex** arrB_2d = new Complex*[res];
+
+    for (int i = 0; i < len; i++) {
+        arrA_line[i] = Complex((rand() % 15)/10.0, (rand() % 15) / 10.0);
+        arrB_line[i] = Complex(1,1);
+    }
+    for (int i = 0; i < res; i++) {
+        arrA_2d[i] = new Complex[res];
+        arrB_2d[i] = new Complex[res];
+        for (int j = 0; j < res; j++) {
+            arrA_2d[i][j] = arrA_line[m_2d_to_line(i, j, res)];
+            arrB_2d[i][j] = Complex(1,1);
+        }
+    }
+
+    cout << "1. Input:" << endl;
+
+    cout << "A LINE:" << endl;
+    printM(arrA_line, res);
+    cout << "A 2D:" << endl;
+    printM(arrA_2d, res);
+
+    cout << endl << "B LINE:" << endl;
+    printM(arrB_line, res);
+    cout << endl << "B 2D:" << endl;
+    printM(arrB_2d, res);
+
+    //
+    // 2. Multiplication
+    //
+
+    for (int i = 0; i < 3; i++) {
+        m_multy(arrA_line, arrA_line, arrB_line, res);
+        arrA_line = arrB_line;
+        m_multy(arrA_2d, arrA_2d, arrB_2d, res);
+        arrA_2d = arrB_2d;
+    }
+
+    cout << "2. A in 8th grade:" << endl;
+    cout << "C LINE:" << endl;
+    printM(arrA_line, res);
+
+    cout << "C 2D:" << endl;
+    printM(arrA_2d, res);
+
+    //
+    // 4. Cleanup
+    //
+
+    arrA_line, arrB_line = nullptr;
+    arrA_2d, arrB_2d = nullptr;
+
+    delete[] arrA_line;
+    delete[] arrB_line;
+    delete[] arrA_2d;
+    delete[] arrB_2d;
+
+    return 0;
 }
