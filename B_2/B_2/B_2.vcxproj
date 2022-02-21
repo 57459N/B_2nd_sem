@@ -148,6 +148,7 @@
     <ClCompile Include="1.6.cpp" />
     <ClCompile Include="2.1.cpp" />
     <ClCompile Include="2.2.cpp" />
+    <ClCompile Include="2.3.cpp" />
     <ClCompile Include="create_numbers.cpp" />
     <ClCompile Include="Functions.cpp" />
   </ItemGroup>

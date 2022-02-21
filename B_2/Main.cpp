@@ -9,6 +9,7 @@ int m15();
 int m16();
 int m21();
 int m22();
+int m23();
 
 
 void create_numbers();
@@ -17,6 +18,6 @@ using namespace std;
 
 int main()
 {
-	m21();
+	m23();
 	return 0;
 }
