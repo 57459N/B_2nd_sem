@@ -51,10 +51,33 @@
     <ClCompile Include="2.2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="2.4.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="female_names.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="female_patronymics.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="female_surnames.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="male_names.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="male_patronymics.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
+    <Text Include="male_surnames.txt">
+      <Filter>Исходные файлы</Filter>
+    </Text>
   </ItemGroup>
 </Project>
