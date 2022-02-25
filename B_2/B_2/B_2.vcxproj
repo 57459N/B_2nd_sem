@@ -149,11 +149,20 @@
     <ClCompile Include="2.1.cpp" />
     <ClCompile Include="2.2.cpp" />
     <ClCompile Include="2.3.cpp" />
+    <ClCompile Include="2.4.cpp" />
     <ClCompile Include="create_numbers.cpp" />
     <ClCompile Include="Functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="female_names.txt" />
+    <Text Include="female_patronymics.txt" />
+    <Text Include="female_surnames.txt" />
+    <Text Include="male_names.txt" />
+    <Text Include="male_patronymics.txt" />
+    <Text Include="male_surnames.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
