@@ -46,7 +46,7 @@ public:
 		return avg_score;
 	}
 
-	void update(Student student) {
+	void push_back(Student student) {
 		Node* newNode = new Node;
 
 		newNode->student = student;
@@ -66,7 +66,7 @@ public:
 			current->next = newNode;
 			avg_score = (avg_score * items_amount + student.score) / (items_amount + 1);
 			items_amount++;
-		}
+		}	
 	}
 
 	void show() {
@@ -150,7 +150,7 @@ int m23 () {
 		student.score = (rand() % 100) / 10.0;
 
 
-		Students_list.update(student);
+		Students_list.push_back(student);
 	}
 	Students_list.show();
 	//Students_list.show([](const Student& s) {return s.score > Students_list.get_avg(); });
