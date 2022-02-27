@@ -11,14 +11,13 @@ int m21();
 int m22();
 int m23();
 int m24();
-
+int m25();
+int m26();
 
 void create_numbers();
 
-using namespace std;
-
 int main()
 {
-	m24();
+	m26();
 	return 0;
 }
