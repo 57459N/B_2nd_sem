@@ -12,7 +12,7 @@ private:
 
 	// DATA:  1 2 3 4 5
 	// indEX: 1 2 3 4 0
-	//
+	
 	int find_empty() {
 		for (int i = 0; i < 255; i++) {
 			if (this->index[i] == -1) {
@@ -28,8 +28,6 @@ public:
 			this->index[i] = -1;
 		}
 	}
-
-
 
 	void pushback(const int& c, const int& addres = -2) {
 		int cur = first;
