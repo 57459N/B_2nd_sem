@@ -19,26 +19,75 @@ struct Branch {
 };
 
 class BTree {
+private:
+	Branch* _head = nullptr;
+
+	Branch* find(Branch* top, const int& num) {
+		if (top == nullptr) {
+			return nullptr;
+		}
+
+		Branch* p;
+		if (num < top->data) {
+			p = find(top->child1, num);
+		}
+		else {
+			p = find(top->child2, num);
+		}
+
+		if (p != nullptr) {
+			return p;
+		}
+		return top;
+	}
 
 public:
-	Branch* _head = new Branch(0);
-	void go_down(Branch* parent, int iter, int depth) {
-		parent->child1 = new Branch(INT32_MIN);
-		parent->child2 = new Branch(INT32_MIN);
-		if (iter < depth) {
-			go_down(parent->child1, iter + 1, depth);
-			go_down(parent->child2, iter + 1, depth);
+
+	BTree() = default;
+
+	void pushback(const int& num) {
+
+		Branch* newEl = new Branch(num);
+		if (_head == nullptr) {
+			_head = newEl;
+		}
+		else {
+			Branch* to_ins = find(_head, num);
+
+			if (num < to_ins->data) {
+				to_ins->child1 = newEl;
+			}
+			else {
+				to_ins->child2 = newEl;
+			}
 		}
 	}
 
-	BTree(int pairs) {
-		int depth = ceil(log2(pairs));
-		int iter = 0;
-		_head->data = iter;
-		go_down(_head, iter, depth);
+	void complete(Branch* top) {
+		if (top->child1 == nullptr && top->child2 == nullptr) {
+			return;
+		}
+		if (top->child1 == nullptr) {
+			top->child1 = new Branch(top->data);
+		}
+		if (top->child2 == nullptr) {
+			top->child2 = new Branch(top->data);
+		}
+
+		complete(top->child1);
+		complete(top->child2);
+	}
+
+	void complete() {
+		complete(_head);
 	}
 
 	void show(Branch* parent) {
+
+		if (parent == nullptr) {
+			return;
+		}
+
 		if (parent->child1 == nullptr && parent->child2 == nullptr) {
 			cout << parent->data;
 			return;
@@ -47,13 +96,25 @@ public:
 			show(parent->child1);
 			cout << parent->data;
 			show(parent->child2);
-		}\
+		}
+	}
 
-
+	void show() {
+		show(_head);
 	}
 };
 
 
 int m27() {
+
+	BTree tree;
+	tree.pushback(2);
+	for (int i = 0; i < 5; i++) {
+		if (i == 2) continue;
+		tree.pushback(i);
+	}
+	tree.complete();
+	tree.show();
+
 	return 0;
 }
