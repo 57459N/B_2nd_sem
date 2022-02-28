@@ -4,60 +4,74 @@
 using namespace std;
 
 
-struct Branch {
+struct Node {
 
-	int data;
-	Branch* child1 = nullptr;
-	Branch* child2 = nullptr;
+	int data = 0;
+	Node* next = nullptr;
+	Node* prev = nullptr;
 
-	Branch(int data, Branch* child1 = nullptr, Branch* child2 = nullptr) {
+	Node(int data, Node* prev = nullptr, Node* next = nullptr) {
 
 		this->data = data;
-		this->child1 = child1;
-		this->child2 = child2;
+		this->next = next;
+		this->prev = prev;
 	}
-
 };
 
+class TwoList {
 
-class BTree {
+private:
+	Node* _head = nullptr;
+	Node* _tail = nullptr;
 
 public:
-	Branch* _head = new Branch(0);
-	void go_down(Branch* parent, int iter, int depth) {
-		parent->child1 = new Branch(INT32_MIN);
-		parent->child2 = new Branch(INT32_MIN);
-		if (iter < depth) {			
-			go_down(parent->child1, iter + 1, depth);
-			go_down(parent->child2, iter + 1, depth);
+	TwoList() = default;
+
+	void pushback(const int& num) {
+		Node* newNode = new Node(num);
+
+		if (_head == nullptr) {
+			_head = newNode;
+			_tail = newNode;
+		}
+		else{
+			Node* it = _head;
+			while (it->next != nullptr) {
+				it = it->next;
+			}
+			newNode->prev = it;
+			it->next = newNode;
+			_tail = newNode;
 		}
 	}
 
-	BTree(int pairs) {
-		int depth = ceil(log2(pairs));
-		int iter = 0;
-		_head->data = iter;
-		go_down(_head, iter, depth);
+	void show_result() {
+		Node* first = _head;
+		Node* last = _tail;
+		int result = INT32_MAX;
+
+		do {
+			result = min(result, max(first->data, last->data));
+			cout << first->data << " " << last->data << endl;
+			first = first->next;
+			last = last->prev;
+		} while (first->next != last);
+		cout << first->data << " " << last->data << endl;
+
+		result = min(result, max(first->data, last->data));
+		cout << endl << "> " << result;
 	}
-
-	void show(Branch* parent) {
-		if (parent->child1 == nullptr && parent->child2 == nullptr) {
-			cout << parent->data;
-			return;
-		}
-		else {
-			show(parent->child1);
-			cout << parent->data;
-			show(parent->child2);
-		}\
-
 
 };
 
 int m26() {
 
-	BTree tree = BTree(2);
-	tree.show();
+	TwoList list;
 
+	for (int i = 0; i < 10; i++) {
+		list.pushback(i);
+	}
+
+	list.show_result();
 	return 0;
 }
