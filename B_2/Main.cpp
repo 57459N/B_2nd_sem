@@ -13,6 +13,7 @@ int m23();
 int m24();
 int m25();
 int m26();
+int m27();
 
 void create_numbers();
 
