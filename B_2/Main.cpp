@@ -19,6 +19,6 @@ void create_numbers();
 
 int main()
 {
-	m26();
+	m25();
 	return 0;
 }
