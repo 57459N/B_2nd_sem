@@ -2,44 +2,41 @@
 
 using namespace std;
 
-struct Node {
-
-	char c = 0;
-	int next = 0;
-
-	Node() {
-		this->c = 0;
-		this->next = 0;
-	}
-};
-
 class List_c25{
 
 private:
+	int data[255]{};
+	int index[255];
+	
+	int first = 0;
 
-	Node* _list;
+	// DATA:  1 2 3 4 5
+	// indEX: 1 2 3 4 0
+	//
 
 public:
-	//List_c25() {
-	//	_list = new Node[1000];
-	//}
-
-	//~List_c25() {
-	//	delete[] _list;
-	//	_list = nullptr;
-	//}
-
-	void pushback(const char& c) {
-
-	}
-
-	void show() {
-		Node el = _list[0];
-		while (el.next != 0) {
-			cout << el.c << " ";
+	List_c25() {
+		for (int i = 0; i < 255; i++) {
+			this->index[i] = -1;
 		}
-		cout << el.c << endl;
 	}
+
+	int find_empty() {
+		for (int i = 0; i < 255; i++) {
+			if (this->index[i] == -1){ 
+				return i;
+			}
+		}
+	}
+
+	void pushback(const int& c) {
+		int cur = first;
+		while (this->index[cur] != -2) {
+			cur = this->index[cur];
+		}
+
+	}
+
 };
 
 //void fill_chars(List_c25& c) {
@@ -55,7 +52,6 @@ public:
 int m25() {
 
 	List_c25 chars;
-	chars.show();
 
 	return 0;
 }
