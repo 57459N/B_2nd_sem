@@ -134,6 +134,7 @@ int m25() {
 	List_c25 to;
 	to.pushback('Q');
 	to.pushback('Q');
+	to.pushback('Q');
 
 	chars.paste(from, to);
 
