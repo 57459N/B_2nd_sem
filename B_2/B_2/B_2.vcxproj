@@ -153,8 +153,10 @@
     <ClCompile Include="2.5.cpp" />
     <ClCompile Include="2.6.cpp" />
     <ClCompile Include="2.7.cpp" />
+    <ClCompile Include="create_11.cpp" />
     <ClCompile Include="create_numbers.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="oop_1.1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h" />

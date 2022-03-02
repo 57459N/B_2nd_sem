@@ -15,10 +15,14 @@ int m25();
 int m26();
 int m27();
 
+int oop11();
+
 void create_numbers();
+void create_for_oop_11();
 
 int main()
 {
-	m27();
+	oop11();
+
 	return 0;
 }
