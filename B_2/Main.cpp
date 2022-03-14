@@ -19,9 +19,11 @@ int oop11();
 
 void create_numbers();
 void create_for_oop_11();
+void create_for_oop_11_new();
 
 int main()
 {
+	//create_for_oop_11_new();
 	oop11();
 
 	return 0;
