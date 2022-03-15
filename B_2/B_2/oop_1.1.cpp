@@ -98,62 +98,63 @@ void new_divide() {
 	int less_amount = 0;
 
 	int i = 0;
-	
+
 	if (input.is_open() && more.is_open() && less.is_open()) {
 		cout << "new divining..." << endl;
-				
+
 		char str[10]{};
 		auto prev = chrono::high_resolution_clock::now();
 		while (input >> str) {
 			double buffer = atof(str);
 			strcat(str, "\n");
 
-		char str[10]{};
-		auto prev = chrono::high_resolution_clock::now();
-		while (input >> str) {
-			float buffer = atof(str);
-			strcat(str, "\n");
+			char str[10]{};
+			auto prev = chrono::high_resolution_clock::now();
+			while (input >> str) {
+				float buffer = atof(str);
+				strcat(str, "\n");
 
-			if (buffer > SQR2) {
-				strcat(more_buff, str);
-				more_amount++;
-			}
-			else {
-				strcat(less_buff, str);
-				less_amount++;
-			}
+				if (buffer > SQR2) {
+					strcat(more_buff, str);
+					more_amount++;
+				}
+				else {
+					strcat(less_buff, str);
+					less_amount++;
+				}
 
-			if (more_amount >= LEN / row_len) {
-				more << more_buff;
-				more_buff[0] = '\0';
-				more_amount = 0;
-			}
-			if (less_amount >= LEN / row_len) {
-				less << less_buff;
-				less_buff[0] = '\0';
-				less_amount = 0;
-			}
+				if (more_amount >= LEN / row_len) {
+					more << more_buff;
+					more_buff[0] = '\0';
+					more_amount = 0;
+				}
+				if (less_amount >= LEN / row_len) {
+					less << less_buff;
+					less_buff[0] = '\0';
+					less_amount = 0;
+				}
 
-			if (!(i++ % precision)) {
-				cout << i - 1 << endl;
-				/*auto now = chrono::high_resolution_clock::now();
-				cout << chrono::duration_cast<chrono::microseconds>(now - prev).count() << endl;
-				prev = now;*/
+				if (!(i++ % precision)) {
+					cout << i - 1 << endl;
+					/*auto now = chrono::high_resolution_clock::now();
+					cout << chrono::duration_cast<chrono::microseconds>(now - prev).count() << endl;
+					prev = now;*/
+				}
 			}
 		}
+		cout << "divided" << endl;
+
+		less_buff = {};
+		more_buff = {};
+		delete[] more_buff;
+		delete[] less_buff;
+		more_buff = nullptr;
+		less_buff = nullptr;
+
+		input.close();
+		less.close();
+		more.close();
 	}
-	cout << "divided" << endl;
-
-	less_buff = {};
-	more_buff = {};
-	delete[] more_buff;
-	delete[] less_buff;
-	more_buff = nullptr;
-	less_buff = nullptr;
-
-	input.close();
-	less.close();
-	more.close();
 }
 
 
@@ -182,7 +183,7 @@ void merge() {
 					output.write(more_buf, sizeof(more_buf));
 					i++;
 					break;
-					
+
 				}
 			}
 
@@ -206,55 +207,12 @@ void merge() {
 			}
 		}
 
-	
+
 	}
 	cout << "merged..." << endl;
 }
 
-void new_merge() {
-
-	ifstream more("more_sqr2_new.txt");
-	ifstream less("less_sqr2_new.txt");
-	ofstream output("oop_11_out_new.txt");
-
-	const int LEN = 10 * 3;
-	char* buff = new char[LEN] {};
-	int buff_amount = 0;
-
-
-	int i = 0;
-	if (output.is_open() && more.is_open() && less.is_open()) {
-		cout << "merging..." << endl;
-		char buffer_more[5]{};
-		char buffer_less[5]{};
-
-		while (more >> buffer_more && less >> buffer_less) {
-
-			strcat(buff, buffer_more);
-			strcat(buff, "\n");
-			strcat(buff, buffer_less);
-			strcat(buff, "\n");
-
-			buff_amount++;
-
-			if (buff_amount >= LEN / 10) {
-				output << buff;
-				buff[0] = '\0';
-				buff_amount = 0;
-			}
-
-			if (!(i++ % precision)) {
-				cout << i - 1 << endl;
-			}
-		}
-	}
-	cout << "merged..." << endl;
-
-}
-
-
-
-void check() {
+void check(){
 	ifstream input("oop_11_out.txt");
 
 	int i = 0;
@@ -279,11 +237,12 @@ void check() {
 }
 
 int oop11() {
-	
+
 	time_t start = time(nullptr);
 	//create_for_oop_11_new();
 	merge();
 	cout << "Merging : " << time(nullptr) - start << endl;
 	return 0;
 }
-// dounlouded from rfe.homework.by
+
+

@@ -65,4 +65,4 @@ void create_for_oop_11_new() {
 		system("pause");
 	}
 }
-}
+
