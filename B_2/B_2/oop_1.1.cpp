@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <cstring>
@@ -9,6 +10,47 @@
 using namespace std;
 
 const double SQR2 = 1.41;
+const int precision = 1000000;
+
+void create_for_oop_11_new() {
+	srand(time(nullptr));
+	ofstream out("numbers_oop_11.txt");
+
+	const int precision = 1000000;
+
+	char buffer[5 * 1]{};
+	char num[100]{};
+
+	const long amount_of_numbers = 1000000000;
+
+	if (out.is_open()) {
+		time_t start = time(nullptr);
+		for (long i = 0; i < amount_of_numbers / 2; i++) {
+			float n = ((rand() % 141) + 142) / 100.;
+			snprintf(num, 5, "%f", n);
+
+			strcat(num, "\n");
+			out << num;
+
+			if (!(i % precision)) {
+				cout << i << endl;
+			}
+		}
+
+		for (long i = 0; i < amount_of_numbers / 2; i++) {
+			float n = (rand() % 142) / 100.;
+			snprintf(num, 5, "%f", n);
+			strcat(num, "\n");
+
+			out << num;
+
+			if (!(i % precision)) {
+				cout << i << endl;
+			}
+		}
+		cout << endl << "Creating : " << time(nullptr) - start;
+	}
+}
 
 void divide() {
 	ifstream input("numbers_oop_11.txt");
@@ -31,7 +73,7 @@ void divide() {
 			else {
 				less << str;
 			}
-			if (!(i++ % 10000)) {
+			if (!(i++ % precision)) {
 				cout << i - 1 << endl;
 				auto now = chrono::high_resolution_clock::now();
 				cout << chrono::duration_cast<chrono::microseconds>(now - prev).count() << endl;
@@ -50,9 +92,9 @@ void new_divide() {
 	const int row_len = 5;
 	const int LEN = row_len * 6; // (digit len + 1) * buff size
 
-	char* more_buff = new char[LEN]{};
+	char* more_buff = new char[LEN] {};
 	int more_amount = 0;
-	char* less_buff = new char[LEN]{};
+	char* less_buff = new char[LEN] {};
 	int less_amount = 0;
 
 	int i = 0;
@@ -64,6 +106,12 @@ void new_divide() {
 		auto prev = chrono::high_resolution_clock::now();
 		while (input >> str) {
 			double buffer = atof(str);
+			strcat(str, "\n");
+
+		char str[10]{};
+		auto prev = chrono::high_resolution_clock::now();
+		while (input >> str) {
+			float buffer = atof(str);
 			strcat(str, "\n");
 
 			if (buffer > SQR2) {
@@ -86,11 +134,11 @@ void new_divide() {
 				less_amount = 0;
 			}
 
-			if (!(i++ % 10000)) {
+			if (!(i++ % precision)) {
 				cout << i - 1 << endl;
-				auto now = chrono::high_resolution_clock::now();
+				/*auto now = chrono::high_resolution_clock::now();
 				cout << chrono::duration_cast<chrono::microseconds>(now - prev).count() << endl;
-				prev = now;
+				prev = now;*/
 			}
 		}
 	}
@@ -108,106 +156,59 @@ void new_divide() {
 	more.close();
 }
 
-void test_div() {
-	ifstream input("numbers_oop_11.txt");
-	ofstream more("more_sqr2_new.txt");
-	ofstream less("less_sqr2_new.txt");
-
-	
-	int i = 0;
-
-	if (input.is_open() && more.is_open() && less.is_open()) {
-		cout << "new divining..." << endl;
-
-		char str[10]{};
-		
-		for (int j = 1; j <= 20; j++) {
-			const int row_len = 5;
-			const int LEN = row_len * j; // (digit len + 1) * buff size
-
-			char* more_buff = new char[LEN] {};
-			int more_amount = 0;
-			char* less_buff = new char[LEN] {};
-			int less_amount = 0;
-
-			
-			auto prev = chrono::high_resolution_clock::now();
-			int sum = 0;
-			for (long a = 1; a < 1000000; a++, input >> str) {
-				double buffer = atof(str);
-				strcat(str, "\n");
-
-				if (buffer > SQR2) {
-					strcat(more_buff, str);
-					more_amount++;
-				}
-				else {
-					strcat(less_buff, str);
-					less_amount++;
-				}
-
-				if (more_amount >= LEN / row_len) {
-					more << more_buff;
-					more_buff[0] = '\0';
-					more_amount = 0;
-				}
-				if (less_amount >= LEN / row_len) {
-					less << less_buff;
-					less_buff[0] = '\0';
-					less_amount = 0;
-				}
-
-				if (!(i++ % 10000)) {
-					auto now = chrono::high_resolution_clock::now();
-					int diff = chrono::duration_cast<chrono::microseconds>(now - prev).count();
-					sum += diff;
-					std::cout << j << " : " << diff << endl;
-					prev = now;
-				}
-			}
-			std::cout << " average :        " << sum/100. << endl;
-			less_buff = {};
-			more_buff = {};
-			delete[] more_buff;
-			delete[] less_buff;
-			more_buff = nullptr;
-			less_buff = nullptr;
-		}
-		cout << "divided" << endl;
-		
-	}
-		
-	input.close();
-	less.close();
-	more.close();
-}
-
 
 void merge() {
 
-	ifstream more("more_sqr2.txt");
-	ifstream less("less_sqr2.txt");
+	ifstream more("numbers_oop_11.txt");
+	ifstream less("numbers_oop_11.txt");
 	ofstream output("oop_11_out.txt");
 
 	int i = 0;
 	if (output.is_open() && more.is_open() && less.is_open()) {
 		cout << "merging..." << endl;
-		double buffer_more;
-		double buffer_less ;
-		while (more >> buffer_more && less >> buffer_less) {
-			
-			output << buffer_more << endl << buffer_less << endl;
+		char more_buf[6]{};
+		float more_number = 0.0f;
 
-			if (!(i++ % 1000000)) {
-				cout << i - 1 << endl;
+		char less_buf[6]{};
+		float less_number = 0.0f;
+		auto prev = chrono::high_resolution_clock::now();
+		while (more || less)
+		{
+			while (more) {
+				more.read(more_buf, sizeof(more_buf));
+				more_number = atof(more_buf);
+
+				if (more_number > SQR2) {
+					output.write(more_buf, sizeof(more_buf));
+					i++;
+					break;
+					
+				}
+			}
+
+			while (less) {
+				less.read(more_buf, sizeof(more_buf));
+				less_number = atof(less_buf);
+
+				if (less_number < SQR2) {
+					output.write(less_buf, sizeof(less_buf));
+					i++;
+					break;
+				}
+
+			}
+
+			if (!(i % precision)) {
+				cout << i << endl;
+				auto now = chrono::high_resolution_clock::now();
+				cout << chrono::duration_cast<chrono::milliseconds>(now - prev).count() << endl;
+				prev = now;
 			}
 		}
+
+	
 	}
 	cout << "merged..." << endl;
-
-	more.close();
-	less.close();
-	output.close();
 }
 
 void new_merge() {
@@ -220,13 +221,13 @@ void new_merge() {
 	char* buff = new char[LEN] {};
 	int buff_amount = 0;
 
-	
+
 	int i = 0;
 	if (output.is_open() && more.is_open() && less.is_open()) {
 		cout << "merging..." << endl;
 		char buffer_more[5]{};
 		char buffer_less[5]{};
-		
+
 		while (more >> buffer_more && less >> buffer_less) {
 
 			strcat(buff, buffer_more);
@@ -242,12 +243,13 @@ void new_merge() {
 				buff_amount = 0;
 			}
 
-			if (!(i++ % 1000000)) {
+			if (!(i++ % precision)) {
 				cout << i - 1 << endl;
 			}
 		}
 	}
 	cout << "merged..." << endl;
+
 }
 
 
@@ -268,7 +270,7 @@ void check() {
 
 			prev_more = (buffer > SQR2);
 
-			if (!(i++ % 10000)) {
+			if (!(i++ % precision)) {
 				cout << i - 1 << endl;
 			}
 		}
@@ -278,18 +280,10 @@ void check() {
 
 int oop11() {
 	
-	/*int start = time(nullptr);
-
-	new_divide();
-	int mid = time(nullptr);
-	cout << endl << mid - start << endl;
-	new_merge();
-	int end = time(nullptr);
-	cout << end - mid << endl;
-	cout << end - start << endl;*/
-
-	new_divide();
-
-	system("pause");
+	time_t start = time(nullptr);
+	//create_for_oop_11_new();
+	merge();
+	cout << "Merging : " << time(nullptr) - start << endl;
 	return 0;
 }
+// dounlouded from rfe.homework.by
