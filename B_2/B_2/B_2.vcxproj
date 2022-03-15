@@ -157,6 +157,8 @@
     <ClCompile Include="create_numbers.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="oop_1.1.cpp" />
+    <ClCompile Include="oop_1.2.cpp" />
+    <ClCompile Include="oop_1.3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h" />
