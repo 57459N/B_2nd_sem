@@ -16,15 +16,15 @@ int m26();
 int m27();
 
 int oop11();
+int oop12();
+int oop13();
 
 void create_numbers();
-void create_for_oop_11();
 void create_for_oop_11_new();
 
 int main()
 {
-	//create_for_oop_11_new();
-	oop11();
+	oop13();
 
 	return 0;
 }
