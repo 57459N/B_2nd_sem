@@ -98,64 +98,64 @@ void new_divide() {
 	int less_amount = 0;
 
 	int i = 0;
-	
+
 	if (input.is_open() && more.is_open() && less.is_open()) {
 		cout << "new divining..." << endl;
-				
+
 		char str[10]{};
 		auto prev = chrono::high_resolution_clock::now();
 		while (input >> str) {
 			double buffer = atof(str);
 			strcat(str, "\n");
 
-		char str[10]{};
-		auto prev = chrono::high_resolution_clock::now();
-		while (input >> str) {
-			float buffer = atof(str);
-			strcat(str, "\n");
+			char str[10]{};
+			auto prev = chrono::high_resolution_clock::now();
+			while (input >> str) {
+				float buffer = atof(str);
+				strcat(str, "\n");
 
-			if (buffer > SQR2) {
-				strcat(more_buff, str);
-				more_amount++;
-			}
-			else {
-				strcat(less_buff, str);
-				less_amount++;
-			}
+				if (buffer > SQR2) {
+					strcat(more_buff, str);
+					more_amount++;
+				}
+				else {
+					strcat(less_buff, str);
+					less_amount++;
+				}
 
-			if (more_amount >= LEN / row_len) {
-				more << more_buff;
-				more_buff[0] = '\0';
-				more_amount = 0;
-			}
-			if (less_amount >= LEN / row_len) {
-				less << less_buff;
-				less_buff[0] = '\0';
-				less_amount = 0;
-			}
+				if (more_amount >= LEN / row_len) {
+					more << more_buff;
+					more_buff[0] = '\0';
+					more_amount = 0;
+				}
+				if (less_amount >= LEN / row_len) {
+					less << less_buff;
+					less_buff[0] = '\0';
+					less_amount = 0;
+				}
 
-			if (!(i++ % precision)) {
-				cout << i - 1 << endl;
-				/*auto now = chrono::high_resolution_clock::now();
-				cout << chrono::duration_cast<chrono::microseconds>(now - prev).count() << endl;
-				prev = now;*/
+				if (!(i++ % precision)) {
+					cout << i - 1 << endl;
+					/*auto now = chrono::high_resolution_clock::now();
+					cout << chrono::duration_cast<chrono::microseconds>(now - prev).count() << endl;
+					prev = now;*/
+				}
 			}
 		}
+		cout << "divided" << endl;
+
+		less_buff = {};
+		more_buff = {};
+		delete[] more_buff;
+		delete[] less_buff;
+		more_buff = nullptr;
+		less_buff = nullptr;
+
+		input.close();
+		less.close();
+		more.close();
 	}
-	cout << "divided" << endl;
-
-	less_buff = {};
-	more_buff = {};
-	delete[] more_buff;
-	delete[] less_buff;
-	more_buff = nullptr;
-	less_buff = nullptr;
-
-	input.close();
-	less.close();
-	more.close();
 }
-
 
 void merge() {
 
