@@ -1,10 +1,7 @@
-﻿  oop_1.3.cpp
-D:\Docs\cpp\git\B_2nd_sem\B_2\B_2\oop_1.3.cpp(60,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\Docs\cpp\git\B_2nd_sem\B_2\B_2\oop_1.3.cpp(84,136): warning C4244: аргумент: преобразование "double" в "const float", возможна потеря данных
-D:\Docs\cpp\git\B_2nd_sem\B_2\B_2\oop_1.3.cpp(87,138): warning C4244: аргумент: преобразование "double" в "const float", возможна потеря данных
+﻿  Alg_lab_n11.cpp
   Создание кода
-  2 of 161 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+  2 of 140 functions ( 1.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   B_2.vcxproj -> D:\Docs\cpp\git\B_2nd_sem\B_2\Release\B_2.exe
