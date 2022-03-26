@@ -1,77 +1,75 @@
-#include <cmath>
 #include <iostream>
 
 using namespace std;
 
-void print_arr(int* arr, int len) {
-	for (size_t i = 0; i < len; i++) {
-		cout << arr[i] << " ";
+#define BOYS_MIN 150
+#define BOYS_MAX 200
+#define GIRLS_MIN 150
+#define GIRLS_MAX 200
+
+int alg_lab11() {
+
+	int Bamount = 0;
+	int Gamount = 0;
+	cout << "Enter boys and girls amount: ";
+	cin >> Bamount >> Gamount;
+
+	int Blen = BOYS_MAX - BOYS_MIN + 1;
+	int Glen = GIRLS_MAX - GIRLS_MIN + 1;
+	int* Bheight_all = new int[Blen]{};
+	int* Gheight_all = new int[Glen]{};
+	int* Bheight = new int[Bamount]{};
+	int* Gheight = new int[Gamount]{};
+
+	for (int i = 0; i < Bamount; i++) {
+		int h = 0;
+		cin >> h;
+		Bheight_all[h-BOYS_MIN]++;
 	}
-	cout << endl;
-}
-
-void sum_and_ins(int* arr, int& len) {
-
-	int res_len = 2 * len - 1;
-	int* res_arr = new int[res_len];
-
-	for (int i = 0; i < len; i++) {
-		res_arr[i * 2] = arr[i];
+	for (int i = 0; i < Gamount; i++) {
+		int h = 0;
+		cin >> h;
+		Gheight_all[h-GIRLS_MIN]++;
 	}
-	for (int i = 1; i < res_len-1 ; i += 2) {
-		res_arr[i] = res_arr[i - 1] + res_arr[i + 1];
+		
+	for (int i = 0, bh = 0; i < Blen; i++) {
+		for (int j = 0; j < Bheight_all[i]; j++) {
+			Bheight[bh++] = i + BOYS_MIN;
+		}
 	}
-	
-	delete[] arr;
-	len = res_len;
-	arr = res_arr;
-}
-
-uint64_t sum_of_circle(int* arr, int len) {
-	uint64_t sum = 0;
-	for (int i = 0; i < len; i++) {
-		sum += arr[i];
+	for (int i = 0, gh = 0; i < Glen; i++) {
+		for (int j = 0; j < Gheight_all[i]; j++) {
+			Gheight[gh++] = i + GIRLS_MIN;
+		}
 	}
-	sum *= 2;
-	sum -= arr[0] + arr[len - 1];
-	return sum;
-}
 
+	if(Bamount < Gamount) {
+		cout << "NO";
+		return 0;
+	}
+	if(Bamount == Gamount && Bheight[0] <= Gheight[0]) {
+		cout << "NO";
+		return 0;
+	}
 
-int alg_lab() {
+	int diff = Bamount - Gamount;
+	int Bpassed = 0;
+	for (int bpos = 0, gpos = 0; bpos < Bamount && gpos < Gamount;) {
+		if (Bpassed > diff) {
+			cout << "NO";
+			return 0;
+		}
+		if (Bheight[bpos] > Gheight[gpos]) {
+			bpos++;
+			gpos++;
+		}
+		else {
+			bpos++;
+			Bpassed++;
+		}
+	}
 
-	int* arr = new int[2]{ 1,4 };
-	uint64_t len = 2;
-	int begin = 1+4;
-	int repeat = 40;
-
-	//sum_and_ins(arr, len);
-
-	
-
-	//for (int i = 0; i < repeat; i++) {
-
-	//	uint64_t res_len = 2 * len - 1;
-	//	int* res_arr = new int[res_len];
-
-	//	for (uint64_t i = 0; i < len; i++) {
-	//		res_arr[i * 2] = arr[i];
-	//	}
-	//	for (uint64_t i = 1; i < res_len - 1; i += 2) {
-	//		res_arr[i] = res_arr[i - 1] + res_arr[i + 1];
-	//	}
-	//	delete[] arr;
-	//	len = res_len;
-	//	arr = res_arr;
-	//	cout << i << endl;
-	//	//print_arr(arr, len);
-	//} 
-	// cout << endl << "Cicle: " <<sum_of_circle(arr, len);
-	// либо утечка, либо слишком много чисел
-	
-	cout << endl << "Math: " << uint64_t(begin * pow(3, repeat));
-
-
+	cout << "YES";
 
 	return 0;
 }

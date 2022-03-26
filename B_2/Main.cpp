@@ -22,11 +22,11 @@ int oop13();
 void create_numbers();
 void create_for_oop_11_new();
 
-int alg_lab();
+int alg_lab11();
 
 int main()
 {
-	alg_lab();
+	alg_lab11();
 
 	return 0;
 }
