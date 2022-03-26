@@ -19,6 +19,8 @@ int oop11();
 int oop12();
 int oop13();
 
+int oop21();
+
 void create_numbers();
 void create_for_oop_11_new();
 

@@ -76,12 +76,19 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Algorithms_lab.cpp">
+    <ClCompile Include="test.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="oop_2.1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.h">
+      <Filter>Исходные файлы\Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

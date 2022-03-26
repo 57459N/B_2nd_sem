@@ -29,11 +29,11 @@ public:
 		}
 	}
 
-	void pushback(const int& c, const int& addres = -2) {
+	void pushback(const int& c, const int& address = -2) {
 		int cur = first;
 		if (this->index[cur] == -1) {
 			this->data[cur] = c;
-			this->index[cur] = addres;
+			this->index[cur] = address;
 			return;
 		}
 
@@ -46,7 +46,7 @@ public:
 
 		if (empty != -2) {
 			this->data[empty] = c;
-			this->index[empty] = addres;
+			this->index[empty] = address;
 		}
 		else {
 			cout << "Error: List overflow";

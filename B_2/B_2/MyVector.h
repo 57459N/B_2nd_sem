@@ -39,11 +39,10 @@ public:
 	}
 
 
-	size_t get_size() const {
-		return this->size;
-	}
-	size_t get_len() const {
-		return this->len;
+	int l = 2;
+	int* arr = new int[l]{};
+	for (size_t i = 0; i < l; i++) {
+		arr[i] = i;
 	}
 
 	void set_size(const int& s) {
@@ -75,6 +74,7 @@ public:
 			this->len++;
 		}
 	}
+	input.close();*/
 
 	friend std::ostream& operator<< (std::ostream& str, const MyVector& v) {
 		for (int i = 0; i < v->size; i++) {
@@ -88,4 +88,5 @@ public:
 	T& operator[] (int i) { return this->at(i); }
 private:
 	T& at(size_t ind) { return this->arr[ind]; }
+};
 };

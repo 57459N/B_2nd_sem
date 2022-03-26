@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="MyVector.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="female_names.txt" />

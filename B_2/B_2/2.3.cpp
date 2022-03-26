@@ -83,9 +83,7 @@ public:
 			current = current->next;
 		}
 	}
-	/*void show() {
-		show([](const Student& s) {return true; });
-	}*/
+	
 };
 
 void load(char** arr, const char path[], int len) {
@@ -97,7 +95,6 @@ void load(char** arr, const char path[], int len) {
 		while (i < len && file.getline(line, 100)) {
 			arr[i] = new char[100]{};
 			strcpy(arr[i], line);
-			//cout << i << " " << arr[i] << endl;
 			i++;
 		}
 		delete[] line;
@@ -153,7 +150,6 @@ int m23 () {
 		Students_list.push_back(student);
 	}
 	Students_list.show();
-	//Students_list.show([](const Student& s) {return s.score > Students_list.get_avg(); });
 	
 
 	return 0;
