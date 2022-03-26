@@ -38,6 +38,7 @@ public:
 		
 	}
 
+using namespace std;
 
 	int l = 2;
 	int* arr = new int[l]{};
