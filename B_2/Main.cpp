@@ -19,12 +19,16 @@ int oop11();
 int oop12();
 int oop13();
 
+int oop22();
+
+int oop24();
+
 void create_numbers();
 void create_for_oop_11_new();
 
 int main()
 {
-	oop13();
+	oop24();
 
 	return 0;
 }

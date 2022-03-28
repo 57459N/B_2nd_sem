@@ -3,16 +3,16 @@
 using namespace std;
 
 template <typename T>
-class MyList {
+class MyList{
 private:
 	T data[255]{};
 	int index[255];
 
 	int first = 0;
-	int free_to_use = -1;
-	int end_of_list = -2
+	static const int free_to_use = -1;
+	static const int end_of_list = -2;
 
-	int find_empty() {
+		int find_empty() {
 		for (int i = 0; i < 255; i++) {
 			if (this->index[i] == free_to_use) {
 				return i;
@@ -27,13 +27,14 @@ public:
 			this->index[i] = free_to_use;
 		}
 	}
-	MyList(T* arr, int size) {
+	MyList(T* arr, int size, const int& address = end_of_list) {
+		int cur = first;
 		for (int i = 0; i < size; i++) {
 			int empty = find_empty();
 			this->index[cur] = empty;
 
 			if (empty != end_of_list) {
-				this->data[empty] = c;
+				this->data[empty] = arr[i];
 				this->index[empty] = address;
 			}
 			else {
@@ -50,6 +51,8 @@ public:
 		}
 	}
 
+
+
 	int& get_index(int idx) {
 		return this->index[idx];
 	}
@@ -60,7 +63,7 @@ public:
 
 	void head_init(const int& c) {
 		this->data[this->first] = c;
-		this->index[this->first] = end_of_list;		
+		this->index[this->first] = end_of_list;
 	}
 
 	T& pop(int idx) {
@@ -71,7 +74,7 @@ public:
 			return data[0];
 		}
 
-		for (int i = 0; i < idx-1; i++) {
+		for (int i = 0; i < idx - 1; i++) {
 			if (this->index[cur] == end_of_list) {
 				cout << "List is not big enought" << endl;
 				break;
@@ -81,7 +84,7 @@ public:
 		int idx_to_del = this->index[cur];
 		this->index[cur] = this->index[this->index[cur]];
 		index[idx_to_del] = free_to_use;
-		
+
 		return this->data[idx_to_del];
 	}
 
@@ -118,7 +121,7 @@ public:
 			}
 		}
 		cout << "No such element in this list" << endl;
-		return end_of_list; 
+		return end_of_list;
 	}
 
 	void paste(const MyList& from, MyList& to) {
@@ -174,12 +177,12 @@ public:
 			cout << char(this->data[cur]);
 			cur = this->index[cur];
 		}
-		cout << char(this->data[cur]);
+		cout << this->data[cur];
 	}
 
 	void showall() {
 		for (int i = 0; i < 255; i++) {
-			cout << char(this->data[i]) << " ";
+			cout << this->data[i] << " ";
 		}
 		cout << endl;
 		for (int i = 0; i < 255; i++) {
@@ -194,9 +197,40 @@ public:
 	}
 };
 
-
+template <typename T> 
+void fill_chars_oop(MyList<T>& c) {
+	char a = 0;
+	cin >> a;
+	while (a != '0') {
+		c.pushback(a);
+		cin >> a;
+	}
+}
 
 int oop22() {
+	
+	MyList<char> chars;
+	fill_chars_oop(chars);
+	cout << "start list : ";
+	chars.show();
+	cout << endl;
+
+	MyList<char> replace;
+	fill_chars_oop(replace);
+	cout << "replace this : ";
+	replace.show();
+	cout << endl;
+
+	MyList<char> ins;
+	fill_chars_oop(ins);
+	cout << "to this : ";
+	ins.show();
+	cout << endl;
+
+	cout << "final list : ";
+	chars.paste(replace, ins);
+	chars.show();
+
 
 	return 0;
 }

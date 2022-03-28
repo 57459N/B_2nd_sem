@@ -14,7 +14,7 @@ struct Node {
 };
 
 
-class List_c {
+static class List_c {
 
 private:
 

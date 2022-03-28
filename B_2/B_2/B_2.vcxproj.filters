@@ -75,13 +75,13 @@
     <ClCompile Include="oop_1.3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Algorithms_lab.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Alg_lab_n11.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="oop_2.1.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="oop_2.2.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="oop2.4.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

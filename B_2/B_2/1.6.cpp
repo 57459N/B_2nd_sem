@@ -79,53 +79,6 @@ void mergeSort(T* arr, int begin, int end) {
 }
 
 
-/*template <typename T>
-void mergeSort(T* arr, int begin, int end) {
-    mergeSort(arr, begin, end, el_comp);
-}
-*/
-
-
-//void merge(char** array, int left, int mid, int right) {
-//    int lSub = mid - left + 1;
-//    int rSub = right - mid;
-//
-//    char** lArray = new char*[lSub]{};
-//    char** rArray = new char*[rSub]{};
-//
-//    for (int i = 0; i < lSub; i++)
-//        lArray[i] = array[left + i];
-//    for (auto j = 0; j < rSub; j++)
-//        rArray[j] = array[mid + 1 + j];
-//
-//    int lIndex = 0;
-//    int rIndex = 0;
-//    int mergedIndex = left;
-//
-//    while (lIndex < lSub && rIndex < rSub) {
-//        if (strLessOrEqual(lArray[lIndex], rArray[rIndex])) {
-//            array[mergedIndex] = lArray[lIndex];
-//            lIndex++;
-//        }
-//        else {
-//            array[mergedIndex] = rArray[rIndex];
-//            rIndex++;
-//        }
-//        mergedIndex++;
-//    }
-//    while (lIndex < lSub) {
-//        array[mergedIndex] = lArray[lIndex];
-//        lIndex++;
-//        mergedIndex++;
-//    }
-//    while (rIndex < rSub) {
-//        array[mergedIndex] = rArray[rIndex];
-//        rIndex++;
-//        mergedIndex++;
-//    }
-//    delete[] lArray;
-//    delete[] rArray;
-//}
 
 
 
