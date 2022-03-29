@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,15 +158,18 @@
     <ClCompile Include="create_11.cpp" />
     <ClCompile Include="create_numbers.cpp" />
     <ClCompile Include="Functions.cpp" />
-    <ClCompile Include="oop2.4.cpp" />
     <ClCompile Include="oop_1.1.cpp" />
     <ClCompile Include="oop_1.2.cpp" />
     <ClCompile Include="oop_1.3.cpp" />
     <ClCompile Include="oop_2.1.cpp" />
     <ClCompile Include="oop_2.2.cpp" />
+    <ClCompile Include="oop_2.4.cpp" />
+    <ClCompile Include="oop_2.5.cpp" />
+    <ClCompile Include="oop_3.2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="MyVector.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="female_names.txt" />

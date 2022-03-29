@@ -41,7 +41,6 @@ std::ostream& operator<< (std::ostream& str, const Complex& o) {
     else {
         str << setw(25) << o.re << o.im << "i";
     }
-
     return str;
 }
 
