@@ -34,8 +34,7 @@ public:
 
 	}
 	~MyVector() {
-		delete[] this->arr;
-		this->arr = nullptr;
+		delete[] arr;
 	}
 
 
@@ -85,8 +84,6 @@ public:
 	}
 
 
-	const T& operator[] (int i) const { return this->at(i); }
-	T& operator[] (int i) { return this->at(i); }
-private:
-	T& at(size_t ind) { return this->arr[ind]; }
+	const T& operator[] (int i) const { return this->arr[i]; }
+	T& operator[] (int i) { return this->arr[i]; }
 };

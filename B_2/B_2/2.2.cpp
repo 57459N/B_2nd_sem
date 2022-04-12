@@ -31,18 +31,18 @@ public:
         return *this;
     }
 
-    friend std::ostream& operator<< (std::ostream& str, const Complex& o);
+    friend std::ostream& operator<< (std::ostream& str, const Complex& o) {
+        if (o.im >= 0) {
+            str << setw(25) << o.re << "+" << o.im << "i";
+        }
+        else {
+            str << setw(25) << o.re << o.im << "i";
+        }
+        return str;
+    };
 };
 
-std::ostream& operator<< (std::ostream& str, const Complex& o) {
-    if (o.im >= 0) {
-        str << setw(25) << o.re << "+" << o.im << "i";
-    }
-    else {
-        str << setw(25) << o.re << o.im << "i";
-    }
-    return str;
-}
+
 
 void print_matrix_2d(int** arr, int res) {
     for (int i = 0; i < res; i++) {

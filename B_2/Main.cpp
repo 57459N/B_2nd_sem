@@ -25,6 +25,7 @@ int oop22();
 int oop24();
 int oop25();
 int oop26();
+int oop27();
 
 int oop32();
 
@@ -33,7 +34,7 @@ void create_for_oop_11_new();
 
 int main()
 {
-	oop26();
+	oop27();
 
 	return 0;
 }
