@@ -166,6 +166,7 @@
     <ClCompile Include="oop_2.2.cpp" />
     <ClCompile Include="oop_2.4.cpp" />
     <ClCompile Include="oop_2.5.cpp" />
+    <ClCompile Include="oop_2.6.cpp" />
     <ClCompile Include="oop_3.2.cpp" />
   </ItemGroup>
   <ItemGroup>
