@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 class Item {
@@ -28,7 +30,7 @@ public:
 
 class Drive : public Item {
 	int volume = 0;
-	char* manufacturer = nullptr; //TODO: char*
+	char* manufacturer = nullptr; 
 
 public:
 	Drive() = default;

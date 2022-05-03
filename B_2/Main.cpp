@@ -27,14 +27,21 @@ int oop25();
 int oop26();
 int oop27();
 
+int oop31();
 int oop32();
+int oop33();
+int oop34();
+
+int oop41();
+int oop42();
+int oop43();
 
 void create_numbers();
 void create_for_oop_11_new();
 
 int main()
 {
-	oop27();
+	oop34();
 
 	return 0;
 }

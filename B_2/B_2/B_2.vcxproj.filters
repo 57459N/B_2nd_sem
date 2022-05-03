@@ -15,14 +15,25 @@
     <ClCompile Include="2.5.cpp" />
     <ClCompile Include="2.6.cpp" />
     <ClCompile Include="2.7.cpp" />
-    <ClCompile Include="Algorithms_lab.cpp" />
     <ClCompile Include="create_11.cpp" />
     <ClCompile Include="create_numbers.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="oop_1.1.cpp" />
     <ClCompile Include="oop_1.2.cpp" />
     <ClCompile Include="oop_1.3.cpp" />
-    <ClCompile Include="Algorithms_lab2.cpp" />
+    <ClCompile Include="oop_2.1.cpp" />
+    <ClCompile Include="oop_2.2.cpp" />
+    <ClCompile Include="oop_2.4.cpp" />
+    <ClCompile Include="oop_2.5.cpp" />
+    <ClCompile Include="oop_2.6.cpp" />
+    <ClCompile Include="oop_2.7.cpp" />
+    <ClCompile Include="oop_3.2.cpp" />
+    <ClCompile Include="oop_3.1.cpp" />
+    <ClCompile Include="oop_4.3.cpp" />
+    <ClCompile Include="oop_4.1.cpp" />
+    <ClCompile Include="oop_4.2.cpp" />
+    <ClCompile Include="oop_3.3.cpp" />
+    <ClCompile Include="oop_3.4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\1.1.cpp">
@@ -85,54 +96,20 @@
     <ClCompile Include="oop_1.3.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="oop_2.1.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="oop_2.2.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="oop_2.5.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="oop_2.4.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="oop_3.2.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="oop_2.6.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="oop_2.7.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Functions.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="MyVector.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="MyVector.h" />
+    <ClInclude Include="Items.hpp" />
+    <ClInclude Include="vector.h" />
+    <ClInclude Include="ItemsArray.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="female_names.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-    <Text Include="female_patronymics.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-    <Text Include="female_surnames.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-    <Text Include="male_names.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-    <Text Include="male_patronymics.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
-    <Text Include="male_surnames.txt">
-      <Filter>Исходные файлы</Filter>
-    </Text>
+    <Text Include="female_names.txt" />
+    <Text Include="female_patronymics.txt" />
+    <Text Include="female_surnames.txt" />
+    <Text Include="male_names.txt" />
+    <Text Include="male_patronymics.txt" />
+    <Text Include="male_surnames.txt" />
   </ItemGroup>
 </Project>
